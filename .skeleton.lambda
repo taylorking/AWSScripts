@@ -1,0 +1,5 @@
+
+exports.handler = funtion(event,context) {
+  console.log("I do nothing!");
+  context.succeed();
+}
