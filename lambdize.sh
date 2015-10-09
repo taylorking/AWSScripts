@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 read -p "Function name? " name
 echo "Available Roles:"
 aws iam list-roles > .roles
@@ -23,4 +22,5 @@ echo "I will now zip the file ($fileName) and prepare for upload.. "
 cp $(pwd)/$fileName $(pwd)/index.js  
 zip $(pwd)/upload.zip $(pwd)/index.js
 aws lambda create-function --function-name $name --runtime nodejs --role $role --handler index.handler --zip-file fileb://$(pwd)/upload.zip > .lambda.orig
+
 rm upload.zip
