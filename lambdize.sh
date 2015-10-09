@@ -17,8 +17,8 @@ if [ "$1" = "" ]; then
 else 
   set fileName=$1
 fi
-echo "I will now zip the file ($1) and prepare for upload.. " 
-  cp $fileName index.js  
-  zip upload.zip index.js
-  aws lambda create-function --function-name $name --runtime nodejs --role $role --handler index.handler --zip-file fileb://$(pwd)/upload.zip
-  rm upload.zip index.js
+echo "I will now zip the file ($fileName) and prepare for upload.. " 
+cp $fileName index.js  
+zip upload.zip index.js
+aws lambda create-function --function-name $name --runtime nodejs --role $role --handler index.handler --zip-file fileb://$(pwd)/upload.zip
+rm upload.zip index.js
